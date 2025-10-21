@@ -133,7 +133,7 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
         parameters.enableUserData = true
         parameters.fields = .MinimumFields
         parameters.isRecursive = true
-        parameters.sortBy = [ItemSortBy.sortName.rawValue]
+        parameters.sortBy = [ItemSortBy.random.rawValue]
         parameters.sortOrder = [.ascending]
 
         // Set the parent if we're in a specific library/folder
@@ -149,6 +149,6 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
         // Use shared helper to expand containers (series, boxSets) into playable content
         let playableItems = try await ShuffleActionHelper.collectPlayableItems(from: allItems)
 
-        return playableItems.shuffled()
+        return playableItems
     }
 }

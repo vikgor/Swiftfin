@@ -157,7 +157,7 @@ final class SeriesItemViewModel: ItemViewModel {
         parameters.isRecursive = true
         parameters.isMissing = Defaults[.Customization.shouldShowMissingEpisodes] ? nil : false
         parameters.parentID = item.id
-        parameters.sortBy = [ItemSortBy.sortName.rawValue]
+        parameters.sortBy = [ItemSortBy.random.rawValue]
         parameters.sortOrder = [.ascending]
 
         let request = Paths.getItemsByUserID(
@@ -166,6 +166,6 @@ final class SeriesItemViewModel: ItemViewModel {
         )
         let response = try await userSession.client.send(request)
 
-        return (response.value.items ?? []).shuffled()
+        return response.value.items ?? []
     }
 }

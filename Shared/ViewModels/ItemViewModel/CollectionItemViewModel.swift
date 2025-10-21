@@ -71,7 +71,7 @@ final class CollectionItemViewModel: ItemViewModel {
         parameters.fields = .MinimumFields
         parameters.isRecursive = true
         parameters.parentID = item.id
-        parameters.sortBy = [ItemSortBy.sortName.rawValue]
+        parameters.sortBy = [ItemSortBy.random.rawValue]
         parameters.sortOrder = [.ascending]
 
         let request = Paths.getItemsByUserID(
@@ -82,6 +82,5 @@ final class CollectionItemViewModel: ItemViewModel {
 
         return (response.value.items ?? [])
             .filter(\.isPlayable)
-            .shuffled()
     }
 }
